@@ -619,3 +619,4 @@
 /Users/esatto/Site/my-umbraco-site/bin/Debug/net9.0/runtimes/win/lib/net9.0/System.Windows.Extensions.dll
 /Users/esatto/Site/my-umbraco-site/bin/Debug/net9.0/appsettings-schema.Umbraco.Forms.json
 /Users/esatto/Site/my-umbraco-site/bin/Debug/net9.0/umbraco/Licenses/umbracoForms.lic
+/Users/esatto/Site/my-umbraco-site/obj/Debug/net9.0/my-umbraco-site.sourcelink.json

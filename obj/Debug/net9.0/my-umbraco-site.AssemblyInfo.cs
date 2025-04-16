@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("my-umbraco-site")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cba86c62440ca1087abd39c3b657b2ef5b72f77d")]
 [assembly: System.Reflection.AssemblyProductAttribute("my-umbraco-site")]
 [assembly: System.Reflection.AssemblyTitleAttribute("my-umbraco-site")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
