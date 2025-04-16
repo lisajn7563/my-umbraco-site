@@ -1,0 +1,61 @@
+// Start page specific styles
+@use '../colors.scss';
+@use '../icons.scss';
+
+// This is a test class to verify compilation is working
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+
+// Location section styles
+.location-section {
+  background-color:var(--color-pink-50);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.location-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.location-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.location-card {
+  background-color: var(--color-pink-100);
+  padding: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--color-grey-800);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  border: 2px solid var(--color-pink-900);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  @include icons.icon(after, chevron-right);
+  
+  &:hover {
+    background-color: var(--color-pink-200);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  &::after {
+    margin-left: 0.5rem;
+    color: var(--color-pink-900);
+  }
+}
+

@@ -1,0 +1,74 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using Umbraco.Cms.Web.Common.PublishedModels
+@using Umbraco.Extensions
+@using Umbraco.Cms.Core.Media
+@{
+    var content = Model.Content as ContactCardBlock;
+    if (content == null) { return; }
+}
+
+<div class="contact-card">
+    <div class="contact-card-image">
+        @if (content.MainImage != null)
+        {
+            <img src="@content.MainImage.GetCropUrl()" alt="@content.Title" />
+        }
+    </div>
+    <div class="contact-card-content">
+        @if (!string.IsNullOrEmpty(content.Title))
+        {
+            <h3 class="contact-card-title">@content.Title</h3>
+        }
+        
+        @if (!string.IsNullOrEmpty(content.Address) || !string.IsNullOrEmpty(content.City))
+        {
+            <div class="card-section">
+                <h4 class="card-section-title">Location</h4>
+                <ul class="info-list">
+                         @if (!string.IsNullOrEmpty(content.City))
+                    {
+                        <li class="city">
+                            @content.City
+                        </li>
+                    }
+                    @if (!string.IsNullOrEmpty(content.Address))
+                    {
+                        <li class="address">
+                            @content.Address
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+
+        @if (content.Clients?.Any() == true)
+        {
+            <div class="card-section">
+                <h4 class="card-section-title">Clients</h4>
+                <ul class="client-list">
+                    @foreach (var client in content.Clients)
+                    {
+                        <li class="client">
+                           @client
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+
+        @if (content.Interests?.Any() == true)
+        {
+            <div class="card-section">
+                <h4 class="card-section-title">Interests</h4>
+                <div class="tag-list">
+                    @foreach (var interest in content.Interests)
+                    {
+                        <span class="tag">@interest</span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@await Html.GetBlockGridItemAreasHtmlAsync(Model)

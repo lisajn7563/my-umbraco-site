@@ -1,0 +1,92 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<LandingPage>
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    // Get siblings of the same content type (LandingPage)
+    var siblings = Model.Parent?.Children?.Where(x => x.ContentType.Alias == "landingPage").ToList();
+    var currentIndex = siblings?.FindIndex(x => x.Id == Model.Id) ?? -1;
+    var prevPage = currentIndex > 0 ? siblings?[currentIndex - 1] : null;
+    var nextPage = currentIndex < siblings?.Count - 1 && currentIndex != -1 ? siblings?[currentIndex + 1] : null;
+    
+    // Get reference to start page
+    var startPage = Umbraco.ContentAtRoot().FirstOrDefault(x => x.ContentType.Alias == "startPage");
+    
+    // Get standard pages that are children of this landing page
+    var standardPage = Model.Children?.FirstOrDefault(x => x.ContentType.Alias == "standardPage");
+}
+
+<div>
+    @if (Model.MainImage != null)
+    {
+        <div>
+            <img src="@Model.MainImage.Url()" alt="@Model.Name">
+            <div>
+                <h1>@Model.Name</h1>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @if (Model.Preamble != null)
+    {
+        <div>
+            <div>
+                @Model.Preamble
+            </div>
+        </div>
+    }
+
+    @if (Model.MainGrid != null)
+    {
+        <div>
+            <div>
+                @await Html.GetBlockGridHtmlAsync(Model.MainGrid)
+            </div>
+        </div>
+    }
+    
+    <div class="landing-page-navigation">
+        @if (prevPage != null)
+        {
+            <a href="@prevPage.Url()" class="btn-navigation btn-prev" title="@prevPage.Name">
+            </a>
+        }
+        else
+        {
+            <span class="btn-navigation btn-prev disabled" title="No previous page">
+            </span>
+        }
+        
+        @if (startPage != null)
+        {
+            <a href="@startPage.Url()" class="btn-navigation btn-home" title="Back to start">
+            </a>
+        }
+        
+        @if (standardPage != null)
+        {
+            <a href="@standardPage.Url()" class="btn-navigation btn-standard" title="@standardPage.Name">
+            </a>
+        }
+        else
+        {
+            <span class="btn-navigation btn-standard disabled" title="No standard page">
+            </span>
+        }
+        
+        @if (nextPage != null)
+        {
+            <a href="@nextPage.Url()" class="btn-navigation btn-next" title="@nextPage.Name">
+            </a>
+        }
+        else
+        {
+            <span class="btn-navigation btn-next disabled" title="No next page">
+            </span>
+        }
+    </div>
+</div>

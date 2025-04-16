@@ -1,0 +1,34 @@
+@mixin icon($placement: after, $icon) {
+  display: inline-flex;
+  align-items: center;
+
+  @if $placement == after {
+    &::after {
+      @include pseudo-icon($icon);
+    }
+  } @else {
+    &::before {
+      @include pseudo-icon($icon);
+    }
+  }
+}
+
+@mixin pseudo-icon($icon: check) {
+  // Path corrected to point to the wwwroot location where the SVGs are served from
+  $icon-url: '/Icons/#{$icon}.svg';
+
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  -webkit-mask-image: url($icon-url);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+
+  mask-image: url($icon-url);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+
+  background-color: currentColor;
+}

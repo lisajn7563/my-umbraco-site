@@ -1,0 +1,28 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<StartPage>
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="hero-section">
+	<h1>@Model.HeroTitle</h1>
+	<p>@Model.HeroPreamble</p>
+</div>
+
+@if (Model.MainMenuItems?.Any() == true)
+{
+	<div class="location-section">
+		<h2 class="location-heading">@Model.MainPreamble</h2>
+		<div class="location-cards">
+			@foreach (var menuItem in Model.MainMenuItems)
+			{
+				<a href="@menuItem.Url()" class="location-card">
+					<span>@menuItem.Name</span>
+				</a>
+			}
+		</div>
+	</div>
+}

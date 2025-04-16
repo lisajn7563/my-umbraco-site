@@ -1,0 +1,26 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<StandardPage>
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div>
+        <h1>@Model.Name</h1>
+    </div>
+
+    <div>
+        @if (Model.MainGrid != null)
+        {
+            @await Html.GetBlockGridHtmlAsync(Model.MainGrid)
+        }
+    </div>
+      @if (Model.MainForm != null)
+    {
+        <div class="forms-wrapper">
+            @await Component.InvokeAsync("RenderForm", new { formId = Model.MainForm, includeScripts = false })
+        </div>
+    }
+</div>

@@ -1,0 +1,155 @@
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-pink-100);
+  border: 1px solid var(--color-pink-300);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+}
+.contact-card .contact-card-image {
+  width: 100%;
+}
+.contact-card .contact-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.contact-card .contact-card-content {
+  padding: 1.5rem;
+}
+.contact-card .contact-card-title {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.contact-card .contact-card-location {
+  margin-bottom: 1.5rem;
+}
+.contact-card .contact-card-location p {
+  margin: 0.2rem 0;
+}
+.contact-card .contact-card-section {
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.contact-card .contact-card-section h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.card-section {
+  background: var(--color-white);
+  border: 1px solid var(--color-pink-200);
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tag-list .tag {
+  background-color: var(--color-pink-300);
+  color: var(--color-grey-900);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+.tag-list .tag::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  -webkit-mask-image: url("/Icons/heart.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("/Icons/heart.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  background-color: currentColor;
+}
+.tag-list .tag::before {
+  color: var(--color-pink-900);
+}
+
+.info-list, .client-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.info-list li, .client-list li {
+  padding: 0.3rem 0;
+  font-size: 0.95rem;
+  gap: 0.5rem;
+}
+.info-list li.address, .client-list li.address {
+  display: inline-flex;
+  align-items: center;
+}
+.info-list li.address::before, .client-list li.address::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  -webkit-mask-image: url("/Icons/map-pin.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("/Icons/map-pin.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  background-color: currentColor;
+}
+.info-list li.city, .client-list li.city {
+  display: inline-flex;
+  align-items: center;
+}
+.info-list li.city::before, .client-list li.city::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  -webkit-mask-image: url("/Icons/globe.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("/Icons/globe.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  background-color: currentColor;
+}
+.info-list li.client, .client-list li.client {
+  display: inline-flex;
+  align-items: center;
+}
+.info-list li.client::before, .client-list li.client::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  -webkit-mask-image: url("/Icons/circle-user-round.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("/Icons/circle-user-round.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  background-color: currentColor;
+}
+
+/*# sourceMappingURL=contact-card.css.map */

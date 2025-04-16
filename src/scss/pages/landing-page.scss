@@ -1,0 +1,82 @@
+@use '../icons.scss';
+.landing-page-navigation {
+  background-color: var(--color-pink-200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-3); // Very small gap (4px) to make buttons appear close together
+  padding: var(--spacing-2) 0;
+  position: fixed;
+  z-index: 20;
+  bottom: 0px; // Position at bottom of viewport
+  left: 0;
+  right: 0;
+  
+  @media (max-width: 768px) {
+    gap: var(--spacing-2); // Consistent small gap on mobile
+  }
+}
+
+.btn-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: var(--color-pink-100);
+  color: var(--color-pink-900);
+  border: 2px solid var(--color-pink-900);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  @include icons.icon(after, chevron-left);
+  
+  &:hover:not(.disabled) {
+    background-color: var(--color-pink-200);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  &.disabled {
+    background-color: var(--color-grey-100);
+    border-color: var(--color-grey-300);
+    color: var(--color-grey-400);
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.7;
+    box-shadow: none;
+    &::after {
+      color: var(--color-grey-400);
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+}
+
+.btn-next {
+  @include icons.icon(after, chevron-right);
+}
+
+.btn-home {
+  @include icons.icon(after, house);
+}
+
+// Standard page button - arrow pointing down
+.btn-standard {
+  background-color: var(--color-pink-100);
+  border-color: var(--color-pink-900);
+  color: var(--color-pink-900);
+  @include icons.icon(after, send);
+  
+  &:hover {
+    background-color: var(--color-pink-200);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  &::after {
+    color: var(--color-pink-900);
+  }
+}
+

@@ -1,0 +1,54 @@
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    var siteName = "My Umbraco Site";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @siteName</title>
+    <link rel="icon" href="/Icons/heart.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
+<body>
+    <header>
+        <div>
+            <a href="/">
+                <svg width="60" height="60" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Bakgrundscirkel -->
+                  <circle cx="60" cy="60" r="60" fill="#8B2C4B" />
+
+                  <!-- Hjärtat, lite längre ner -->
+                  <path d="M60 86
+                         C45 71, 28 59, 28 44
+                         C28 34, 36 28, 46 28
+                         C52 28, 56 32, 60 35
+                         C64 32, 68 28, 74 28
+                         C84 28, 92 34, 92 44
+                         C92 59, 75 71, 60 86 Z"
+                      fill="none" stroke="#FADADD" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                  <!-- Texten M -->
+                  <text x="60" y="60" text-anchor="middle" fill="#fff8f9"
+                        font-size="38px" font-family="Arial" font-weight="600" dy=".2em">M</text>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div>
+            <p>&copy; @DateTime.Now.Year - @siteName</p>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
