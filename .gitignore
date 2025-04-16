@@ -1,1 +1,43 @@
-404: Not Found
+## Umbraco
+# Ignore Umbraco folders (Generated folders created by Umbraco)
+**/umbraco/Data/
+**/umbraco/Logs/
+**/umbraco/Temp/
+**/umbraco/TEMP/
+
+## Ignore bin and obj folders
+**/[Bb]in/
+**/[Oo]bj/
+
+## Ignore Visual Studio files
+*.user
+*.suo
+*.vscode
+.vs/
+.vscode/
+
+## Ignore build output
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+## Ignore NuGet packages
+**/packages/*
+!**/packages/build/
+
+## Ignore SQLite database files
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+## Ignore backup files
+*~
+*.bak
+*.orig
+
+## Ignore runtime files
+*.log
+*.tmp
