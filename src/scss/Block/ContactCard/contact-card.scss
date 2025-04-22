@@ -5,7 +5,7 @@
   flex-direction: column;
   background: var(--color-pink-100);
   border: 1px solid var(--color-pink-300);
-  border-radius: 12px;
+  border-radius: var(--border-radius-m);
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 4rem;
@@ -40,7 +40,7 @@
   
   .contact-card-section {
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: var(--border-radius-m);
     margin-bottom: 1.5rem;
   
     h4 {
@@ -56,7 +56,7 @@
   border: 1px solid var(--color-pink-200);
   padding: 1.5rem;
   padding-bottom: 2rem; // Increased bottom padding
-  border-radius: 12px;
+  border-radius: var(--border-radius-m);
 
 // Increased bottom margin  .// Increased bottom margin  card-section-title {
     font-size: 1.1rem;
@@ -74,7 +74,7 @@
     background-color: var(--color-pink-300);
     color: var(--color-grey-900);
     padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-l);
     font-size: 0.9rem;
     gap: 0.5rem;
     @include icons.icon(before, heart);

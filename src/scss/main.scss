@@ -1,8 +1,23 @@
+/* Global style */
+
+@use './breakpoints.scss';
+@use './typography.scss';
+@use './buttons.scss';
+@use './icons.scss';
+@use './animations.scss';
 @use './global.scss';
 @use './colors.scss';
 @use './spacing.scss';
-@use './icons.scss';
+
+/* Pages */
 
 @use './pages/start-page.scss';
 @use './pages/landing-page.scss';
+@use './pages/standard-page.scss';
+
+/* Components */
+@use './components/umbraco-forms.scss';
+
+/* Blocks */
+
 @use './Block/ContactCard/contact-card.scss';

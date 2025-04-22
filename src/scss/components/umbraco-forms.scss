@@ -1,0 +1,469 @@
+@use '../breakpoints.scss';
+@use '../typography.scss';
+@use '../buttons.scss';
+@use '../icons.scss';
+@use '../animations.scss';
+@use '../global.scss';
+@use '../colors.scss';
+
+:root,
+:host {
+  --form-field-border-radius: var(--border-radius-s);
+  --form-field-border: var(--border-width) solid var(--color-form-border);
+  --form-check-radio-border-width: 2px;
+  --form-check-radio-border: var(--form-check-radio-border-width) solid
+    var(--color-form-border);
+  --form-check-radio-size: 1.5rem;
+}
+
+.umbraco-forms-form,
+.custom-form {
+  .umbraco-forms-page {
+    display: flex;
+    flex-direction: column;
+    padding-block: var(--spacing-6);
+    @extend .content-small-max-width;
+    max-width: 792px;
+  }
+
+  .umbraco-forms-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .umbraco-forms-caption,
+  .titleanddescription h2 {
+    @extend .h2;
+    text-align: center;
+    margin-block-end: var(--spacing-2);
+  }
+
+  .umbraco-forms-field:not(.titleanddescription) {
+    margin-block-end: var(--spacing-3);
+  }
+
+  .titleanddescription {
+    margin-block-end: var(--spacing-4);
+    text-align: center;
+  }
+
+  .row-fluid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .col-md-6,
+  .col-md-12 {
+    grid-column: span 12;
+  }
+
+  .umbraco-forms-hidden {
+    display: none;
+  }
+
+  legend,
+  label {
+    @extend .text-input-label;
+    display: inline-block;
+    margin-block-end: var(--spacing-1);
+    padding: 0;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Wrapper for Previous, Submit/Next buttons */
+  .umbraco-forms-navigation {
+    > * {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--grid-gutter);
+    }
+  }
+
+  /* Form Submit/Next button */
+  input[type='submit'] {
+    @extend .button-primary;
+    cursor: pointer;
+  }
+
+  /* Form Cancel and Previous button */
+  input[type='submit'].cancel,
+  input[type='submit'].prev {
+    @extend .button-secondary;
+  }
+
+  /* Help text, placed next to label */
+  .umbraco-forms-tooltip.help-block {
+    @extend .text-input-label;
+  }
+
+  /* Error text below fields */
+  .field-validation-error {
+    @include icons.icon(before, 'warning');
+    display: flex;
+    align-items: baseline;
+    color: var(--color-error-main);
+    gap: var(--spacing-0-5);
+    margin-block-start: var(--spacing-0-5);
+
+    &::before {
+      transform: translateY(2px);
+      width: 1rem;
+      height: 1rem;
+    }
+
+    @include breakpoints.breakpoint(m) {
+      margin-block-end: -1.75rem;
+    }
+  }
+
+  /* Input, Select, Textarea */
+  /* ----------------------- */
+
+  input:not([type='submit']),
+  select,
+  textarea {
+    @extend .text-input-text;
+    width: 100%;
+    border-radius: var(--form-field-border-radius);
+    border: var(--form-field-border);
+    padding: var(--spacing-1-5) 0 var(--spacing-1-5) var(--spacing-1-5);
+    background-color: var(--color-pink-100);
+  }
+
+  input:not([type='submit']):focus-visible,
+  textarea:focus-visible {
+    border-color: var(--color-cta);
+    outline: var(--border-width) solid;
+    outline-color: var(--color-cta);
+  }
+
+  :where(input:not([type='submit']), select, textarea):disabled {
+    border-color: var(--color-form-text-disabled);
+    color: var(--color-form-text-disabled);
+    background-color: var(--color-form-bg-disabled);
+  }
+
+  :where(input:not([type='submit']), select, textarea):hover:not(:disabled) {
+    border-color: var(--color-form-border-hover);
+  }
+
+  :where(input:not([type='submit']), select, textarea):invalid,
+  :where(input:not([type='submit']), select, textarea):user-invalid,
+  :where(input:not([type='submit']), select, textarea):has(
+      + span[role='alert'].field-validation-error
+    ) {
+    border-color: var(--color-error-main);
+  }
+
+  /* ------------------------------ */
+  /* End of Input, Select, Textarea */
+
+  /* Select */
+  /* ------ */
+
+  .umbraco-forms-field-wrapper:has(> select) {
+    @include icons.icon(after, 'chevron-down');
+    position: relative;
+    display: block;
+
+    select {
+      appearance: none;
+    }
+
+    &::after {
+      right: var(--spacing-1);
+      top: var(--spacing-1-7-5);
+      position: absolute;
+      pointer-events: none;
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    max-width: 100%;
+    min-width: 100%;
+    font-family: inherit;
+  }
+
+  /* ------------- */
+  /* End of Select */
+
+  /* Checkbox */
+  /* -------- */
+
+  .checkboxlist {
+    display: inline-flex;
+    gap: var(--spacing-1);
+
+    div {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &:has(+ span.field-validation-error) {
+      label {
+        color: var(--color-error-main);
+
+        &::before {
+          border-color: var (--color-error-main);
+        }
+      }
+    }
+  }
+
+  .checkboxlist-vertical {
+    flex-direction: column;
+  }
+
+  input[type='checkbox'] {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+
+  input[type='checkbox'] ~ label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    position: relative;
+    cursor: pointer;
+    color: var(--color-text-primary);
+    margin: 0;
+    @include icons.icon(after, 'check');
+  }
+
+  input[type='checkbox'] ~ label::before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    border: var(--form-check-radio-border);
+    border-radius: var(--form-field-border-radius);
+    width: var(--form-check-radio-size);
+    height: var(--form-check-radio-size);
+    transition:
+      outline-color var(--animation-duration-200)
+        var(--animation-easing-default),
+      background-color var(--animation-duration-200)
+        var(--animation-easing-default),
+      border-color var(--animation-duration-200) var(--animation-easing-default);
+    outline-color: transparent;
+  }
+
+  input[type='checkbox'] ~ label::after {
+    opacity: 0;
+    transition: opacity var(--animation-duration-200)
+      var(--animation-easing-default);
+    position: absolute;
+    left: 1px;
+    scale: 0.8;
+  }
+
+  input[type='checkbox']:checked ~ label {
+    &::before {
+      border-color: var(--color-cta);
+    }
+
+    &::after {
+      opacity: 1;
+      background-color: var(--color-cta);
+    }
+  }
+
+  input[type='checkbox']:not(disabled):hover ~ label {
+    &::before {
+      border-color: var(--color-cta-interaction);
+    }
+
+    &::after {
+      background-color: var(--color-cta-interaction);
+    }
+  }
+
+  input[type='checkbox']:not(disabled):focus-visible ~ label::before {
+    --outline-color: color-mix(in srgb, var(--color-cta) 15%, transparent);
+    outline: calc(var(--form-check-radio-border-width) * 2) var(--outline-color)
+      solid;
+    background-color: var(--outline-color);
+  }
+
+  input[type='checkbox']:disabled ~ label {
+    cursor: initial;
+    color: var(--color-form-text-disabled);
+
+    &::before {
+      border-color: var(--color-form-text-disabled);
+      background-color: var(--color-form-bg-disabled);
+    }
+
+    &::after {
+      background-color: var(--color-form-text-disabled);
+    }
+  }
+
+  input[type='checkbox']:has(~ span.field-validation-error) {
+    & ~ label {
+      color: var(--color-error-main);
+
+      &::before {
+        border-color: var(--color-error-main);
+      }
+    }
+  }
+
+  /* --------------- */
+  /* End of Checkbox */
+
+  /* Radio */
+  /* ----- */
+
+  .radiobuttonlist {
+    display: flex;
+    gap: var(--spacing-1);
+
+    div {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+
+      input {
+        width: auto;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+      }
+
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-1);
+        cursor: pointer;
+        color: var(--color-text-primary);
+        margin: 0;
+      }
+
+      label::before {
+        content: '';
+        position: relative;
+        display: inline-block;
+        border: var(--form-check-radio-border);
+        border-radius: var(--border-radius-round-rem);
+        width: var(--form-check-radio-size);
+        height: var(--form-check-radio-size);
+        transition:
+          outline-color var(--animation-duration-200)
+            var(--animation-easing-default),
+          background-color var(--animation-duration-200)
+            var(--animation-easing-default),
+          border-color var(--animation-duration-200)
+            var(--animation-easing-default);
+        outline-color: transparent;
+      }
+
+      label::after {
+        content: '';
+        display: block;
+        opacity: 0;
+        background-color: var(--color-white);
+        transition: opacity var(--animation-duration-200)
+          var(--animation-easing-default);
+        position: absolute;
+        left: 0.56em;
+        border-radius: var(--border-radius-round-rem);
+        width: calc(var(--form-check-radio-size) / 2);
+        height: calc(var(--form-check-radio-size) / 2);
+      }
+
+      &:has(> input:checked) label {
+        &::before {
+          border-color: var(--color-cta);
+        }
+
+        &::after {
+          opacity: 1;
+          background-color: var(--color-cta);
+        }
+      }
+
+      &:not(:has(> input:disabled)):hover label {
+        &::before {
+          border-color: var(--color-cta-interaction);
+        }
+
+        &::after {
+          background-color: var(--color-cta-interaction);
+        }
+      }
+
+      &:not(:has(> input:disabled)):has(> input:focus-visible) label::before {
+        --outline-color: color-mix(in srgb, var(--color-cta) 15%, transparent);
+        outline: calc(var(--form-check-radio-border-width) * 2)
+          var (--outline-color) solid;
+        background-color: var(--outline-color);
+      }
+
+      &:has(> input:disabled) label {
+        cursor: initial;
+        color: var(--color-form-text-disabled);
+
+        &::before {
+          border-color: var(--color-form-text-disabled);
+          background-color: var(--color-form-bg-disabled);
+        }
+
+        &::after {
+          background-color: var(--color-form-text-disabled);
+        }
+      }
+    }
+
+    &:has(+ span.field-validation-error) {
+      label {
+        color: var(--color-error-main);
+
+        &::before {
+          border-color: var(--color-error-main);
+        }
+      }
+    }
+  }
+
+  .radiobuttonlist-vertical {
+    flex-direction: column;
+  }
+
+  /* ------------ */
+  /* End of Radio */
+
+  /* Desktop specific styles */
+  @include breakpoints.breakpoint(m) {
+    .umbraco-forms-field:not(.titleanddescription) {
+      margin-block-end: var(--spacing-4);
+    }
+
+    .titleanddescription {
+      margin-block-end: var(--spacing-5);
+    }
+
+    .row-fluid {
+      column-gap: var(--spacing-5);
+    }
+
+    .col-md-6 {
+      grid-column: span 6;
+    }
+  }
+}

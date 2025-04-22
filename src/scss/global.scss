@@ -1,5 +1,16 @@
 @use './colors.scss';
 
+// Border radius variables
+:root,
+:host {
+  --border-width: 1px;
+  --border-radius-s: 5px;
+  --border-radius-m: 10px;
+  --border-radius-l: 20px;
+  --border-radius-xl: 30px;
+  --border-radius-round-rem: 50%;
+}
+
 // Base styles
 body {
   background-color: var(--color-pink-200);
@@ -17,18 +28,6 @@ body {
   img{
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: var(--border-radius-m);
   }
-}
-
-// Example component
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  color: var(--color-white);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
 }

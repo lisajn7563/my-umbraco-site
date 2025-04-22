@@ -1,0 +1,42 @@
+// Breakpoints for responsive design
+
+// Breakpoint sizes (in px)
+$breakpoint-xs: 375; // Extra small devices
+$breakpoint-s: 576;  // Small devices
+$breakpoint-m: 768;  // Medium devices
+$breakpoint-l: 992;  // Large devices
+$breakpoint-xl: 1200; // Extra large devices
+$breakpoint-xxl: 1400; // Extra extra large devices
+
+// Mixin for applying styles at different breakpoints
+@mixin breakpoint($size) {
+  @if $size == xs {
+    @media (min-width: #{$breakpoint-xs}px) {
+      @content;
+    }
+  } @else if $size == s {
+    @media (min-width: #{$breakpoint-s}px) {
+      @content;
+    }
+  } @else if $size == m {
+    @media (min-width: #{$breakpoint-m}px) {
+      @content;
+    }
+  } @else if $size == l {
+    @media (min-width: #{$breakpoint-l}px) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (min-width: #{$breakpoint-xl}px) {
+      @content;
+    }
+  } @else if $size == xxl {
+    @media (min-width: #{$breakpoint-xxl}px) {
+      @content;
+    }
+  } @else {
+    @media (min-width: #{$size}px) {
+      @content;
+    }
+  }
+}

@@ -50,4 +50,21 @@
     --color-pink-500: #e7739e;  /* Mellanrosa */
     --color-pink-700: #c64776;  /* Dov men stark rosa */
     --color-pink-900: #8b2c4b;  /* Djup bärig ton */
+
+    /* Form-specific colors */
+    --color-form-border: var(--color-grey-400);
+    --color-form-border-hover: var(--color-pink-900);
+    --color-form-text-disabled: var(--color-grey-500);
+    --color-form-bg-disabled: var(--color-grey-100);
+    
+    // Text & border colors
+    --color-text-primary: var(--color-grey-900);
+    --color-border: var(--color-grey-300);
+    
+    // CTA (Call to Action) colors
+    --color-cta: var(--color-pink-900);
+    --color-cta-interaction: var(--color-pink-700);
+    
+    // Error colors
+    --color-error-main: var(--color-red);
 }
