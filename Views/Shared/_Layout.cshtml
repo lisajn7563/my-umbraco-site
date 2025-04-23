@@ -15,8 +15,8 @@
 </head>
 <body>
     <header>
-        <div>
-            <a href="/">
+        <div class="header-container">
+            <a href="/" class="logo">
                 <svg width="60" height="60" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                   <!-- Bakgrundscirkel -->
                   <circle cx="60" cy="60" r="60" fill="#8B2C4B" />
@@ -36,6 +36,10 @@
                         font-size="38px" font-family="Arial" font-weight="600" dy=".2em">M</text>
                 </svg>
             </a>
+            
+            <div class="header-actions">
+                @await Html.PartialAsync("~/Views/Partials/LikeCounter.cshtml")
+            </div>
         </div>
     </header>
 
@@ -48,6 +52,24 @@
             <p>&copy; @DateTime.Now.Year - @siteName</p>
         </div>
     </footer>
+    
+    <style>
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            display: block;
+        }
+    </style>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -6,7 +6,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     
     // Get siblings of the same content type (LandingPage)
-    var siblings = Model.Parent?.Children?.Where(x => x.ContentType.Alias == "landingPage").ToList();
+    var parent = Model.Parent();
+    var siblings = parent?.Children().Where(x => x.ContentType.Alias == "landingPage").ToList();
     var currentIndex = siblings?.FindIndex(x => x.Id == Model.Id) ?? -1;
     var prevPage = currentIndex > 0 ? siblings?[currentIndex - 1] : null;
     var nextPage = currentIndex < siblings?.Count - 1 && currentIndex != -1 ? siblings?[currentIndex + 1] : null;
@@ -15,7 +16,7 @@
     var startPage = Umbraco.ContentAtRoot().FirstOrDefault(x => x.ContentType.Alias == "startPage");
     
     // Get standard pages that are children of this landing page
-    var standardPage = Model.Children?.FirstOrDefault(x => x.ContentType.Alias == "standardPage");
+    var standardPage = Model.Children().FirstOrDefault(x => x.ContentType.Alias == "standardPage");
 }
 
 <div>
@@ -48,6 +49,11 @@
             </div>
         </div>
     }
+    
+    <!-- Like System -->
+    <div class="page-actions">
+        @await Html.PartialAsync("~/Views/Partials/LikeSystem.cshtml", Model)
+    </div>
     
     <div class="landing-page-navigation">
         @if (prevPage != null)
@@ -90,3 +96,11 @@
         }
     </div>
 </div>
+
+<style>
+    .page-actions {
+        margin: 20px 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>

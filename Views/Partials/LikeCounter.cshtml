@@ -1,0 +1,115 @@
+@{
+    // This partial view displays a counter in the header showing total likes
+    // and displays a dropdown list of liked items when clicked
+}
+
+<div class="like-counter-container">
+    <button id="likeCounterButton" class="like-counter-button">
+        <span id="likeCounterBadge" class="like-counter-badge">0</span>
+    </button>
+    
+    <div id="likedItemsList" class="liked-items-list" style="display: none;">
+        <h3>Items You've Liked</h3>
+        <ul id="likedItemsContainer"></ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const STORAGE_KEY = 'user_liked_items';
+        const likeCounterButton = document.getElementById('likeCounterButton');
+        const likeCounterBadge = document.getElementById('likeCounterBadge');
+        const likedItemsList = document.getElementById('likedItemsList');
+        const likedItemsContainer = document.getElementById('likedItemsContainer');
+        
+        // Initialize counter
+        updateCounter();
+        
+        // Listen for updates from like buttons on the page
+        document.addEventListener('likesUpdated', updateCounter);
+        
+        // Toggle liked items list when clicking the counter
+        likeCounterButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (likedItemsList.style.display === 'none') {
+                showLikedItems();
+                likedItemsList.style.display = 'block';
+            } else {
+                likedItemsList.style.display = 'none';
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (likedItemsList.style.display !== 'none' && 
+                !likedItemsList.contains(event.target) && 
+                event.target !== likeCounterButton &&
+                !likeCounterButton.contains(event.target)) {
+                likedItemsList.style.display = 'none';
+            }
+        });
+        
+        // Update the counter badge
+        function updateCounter() {
+            const likes = getLikedItems();
+            const count = likes.length;
+            
+            likeCounterBadge.textContent = count;
+            
+            if (count > 0) {
+                likeCounterBadge.style.display = 'flex';
+            } else {
+                likeCounterBadge.style.display = 'none';
+            }
+        }
+        
+        // Get likes from local storage
+        function getLikedItems() {
+            const storedLikes = localStorage.getItem(STORAGE_KEY);
+            return storedLikes ? JSON.parse(storedLikes) : [];
+        }
+        
+        // Display all liked items
+        async function showLikedItems() {
+            const likes = getLikedItems();
+            likedItemsContainer.innerHTML = '';
+            
+            if (likes.length === 0) {
+                likedItemsContainer.innerHTML = '<li class="empty-message">You haven\'t liked any items yet.</li>';
+                return;
+            }
+            
+            // Create a loading indicator
+            likedItemsContainer.innerHTML = '<li>Loading...</li>';
+            
+            const likedItemsDetails = [];
+            
+            try {
+                // Fetch details for each liked item
+                for (const id of likes) {
+                    const response = await fetch(`/api/likeapi/content/${id}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        likedItemsDetails.push(data);
+                    }
+                }
+                
+                // Display the liked items
+                likedItemsContainer.innerHTML = '';
+                likedItemsDetails.forEach(item => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = item.url;
+                    a.textContent = item.name;
+                    li.appendChild(a);
+                    likedItemsContainer.appendChild(li);
+                });
+                
+            } catch (error) {
+                console.error('Error fetching liked items:', error);
+                likedItemsContainer.innerHTML = '<li class="empty-message">Error loading liked items.</li>';
+            }
+        }
+    });
+</script>
