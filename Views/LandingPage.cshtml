@@ -24,9 +24,6 @@
     {
         <div>
             <img src="@Model.MainImage.Url()" alt="@Model.Name">
-            <div>
-                <h1>@Model.Name</h1>
-            </div>
         </div>
     }
 </div>
@@ -35,9 +32,7 @@
     @if (Model.Preamble != null)
     {
         <div>
-            <div>
-                @Model.Preamble
-            </div>
+             @Model.Preamble
         </div>
     }
 

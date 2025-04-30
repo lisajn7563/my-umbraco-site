@@ -6,6 +6,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div>
+    @if (Model.HeroImage != null)
+    {
+        <div class="hero-image">
+            <img src="@Model.HeroImage.Url()" alt="@Model.Name">
+        </div>
+    }
+</div>
 
 <div class="hero-section">
 	<h1>@Model.HeroTitle</h1>

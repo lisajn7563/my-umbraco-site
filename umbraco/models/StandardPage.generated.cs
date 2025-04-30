@@ -57,12 +57,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::System.Nullable<global::System.Guid> MainForm => this.Value<global::System.Nullable<global::System.Guid>>(_publishedValueFallback, "mainForm");
 
 		///<summary>
-		/// Main grid
+		/// Main image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("mainGrid")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel MainGrid => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "mainGrid");
+		[ImplementPropertyType("mainIm")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops MainIm => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "mainIm");
 
 		///<summary>
 		/// Preamble

@@ -7,17 +7,19 @@
 }
 
 <div>
-    <div>
+    <div class="page-header">
         <h1>@Model.Title</h1>
         <p>@Model.Preamble</p>
     </div>
 
-    <div>
-        @if (Model.MainGrid != null)
-        {
-            @await Html.GetBlockGridHtmlAsync(Model.MainGrid)
-        }
-    </div>
+  <div>
+    @if (Model.MainIm != null)
+    {
+        <div>
+            <img src="@Model.MainIm.Url()" alt="@Model.Name">
+        </div>
+    }
+</div>
       @if (Model.MainForm != null)
     {
         <div class="forms-wrapper">

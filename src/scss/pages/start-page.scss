@@ -1,7 +1,17 @@
 // Start page specific styles
 @use '../colors.scss';
 @use '../icons.scss';
+@use '../breakpoints.scss';
 
+.hero-image {
+  height: auto; // Default height for mobile devices
+  
+  @media (min-width: 500px) {
+    display: flex;
+    height: 400px;
+    justify-content: center;
+  }
+}
 // This is a test class to verify compilation is working
 .hero-section {
   display: flex;
