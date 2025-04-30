@@ -1,8 +1,8 @@
 .like-button-container {
     display: inline-block;
     position: fixed;
-    bottom: 90px;
-    right: 25px;
+    bottom: var( --spacing-11);
+    right: var( --spacing-3);
     z-index: 1000; // Ensures button is above other content
 }
 
@@ -35,7 +35,7 @@
 }
 
 .icon-heart {
-    width: 18px;
-    height: 18px;
+    width: var(--spacing-2-5);
+    height: var(--spacing-2-5);
     transition: all 0.2s;
 }

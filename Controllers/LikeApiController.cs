@@ -15,7 +15,6 @@ namespace MyUmbracoSite.Controllers
             _umbracoContextAccessor = umbracoContextAccessor;
         }
 
-        // Gets content details by ID (used for populating liked items list)
         [HttpGet("content/{contentId}")]
         public IActionResult GetContentById(int contentId)
         {

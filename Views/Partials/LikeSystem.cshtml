@@ -1,6 +1,5 @@
 @model Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent
 @{
-    // Get the current content ID which will be liked
     var contentId = Model.Id;
 }
 
@@ -18,10 +17,8 @@
         const likeButton = document.getElementById('likeButton-@contentId');
         const contentId = likeButton.getAttribute('data-content-id');
         
-        // LocalStorage key for liked items
         const STORAGE_KEY = 'user_liked_items';
         
-        // Check if this content is already liked
         checkIfLiked();
         
         // Toggle like when button is clicked

@@ -2,7 +2,6 @@
 @use '../typography.scss';
 @use '../buttons.scss';
 @use '../icons.scss';
-@use '../animations.scss';
 @use '../global.scss';
 @use '../colors.scss';
 
@@ -251,19 +250,11 @@
     border-radius: var(--form-field-border-radius);
     width: var(--form-check-radio-size);
     height: var(--form-check-radio-size);
-    transition:
-      outline-color var(--animation-duration-200)
-        var(--animation-easing-default),
-      background-color var(--animation-duration-200)
-        var(--animation-easing-default),
-      border-color var(--animation-duration-200) var(--animation-easing-default);
-    outline-color: transparent;
+    
   }
 
   input[type='checkbox'] ~ label::after {
     opacity: 0;
-    transition: opacity var(--animation-duration-200)
-      var(--animation-easing-default);
     position: absolute;
     left: 1px;
     scale: 0.8;
@@ -363,14 +354,6 @@
         border-radius: var(--border-radius-round-rem);
         width: var(--form-check-radio-size);
         height: var(--form-check-radio-size);
-        transition:
-          outline-color var(--animation-duration-200)
-            var(--animation-easing-default),
-          background-color var(--animation-duration-200)
-            var(--animation-easing-default),
-          border-color var(--animation-duration-200)
-            var(--animation-easing-default);
-        outline-color: transparent;
       }
 
       label::after {
@@ -378,8 +361,6 @@
         display: block;
         opacity: 0;
         background-color: var(--color-white);
-        transition: opacity var(--animation-duration-200)
-          var(--animation-easing-default);
         position: absolute;
         left: 0.56em;
         border-radius: var(--border-radius-round-rem);
