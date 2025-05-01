@@ -7,20 +7,22 @@
 }
 
 <div>
-    <div class="page-header">
-        <h1>@Model.Title</h1>
-        <p>@Model.Preamble</p>
-    </div>
+    @if (!string.IsNullOrWhiteSpace(Model.Title) || !string.IsNullOrWhiteSpace(Model.Preamble))
+    {
+        <div class="page-header">
+            <h1>@Model.Title</h1>
+            <p>@Model.Preamble</p>
+        </div>
+    }
 
-  <div>
     @if (Model.MainIm != null)
     {
-        <div>
+        <div class="image-wrapper">
             <img src="@Model.MainIm.Url()" alt="@Model.Name">
         </div>
     }
-</div>
-      @if (Model.MainForm != null)
+
+    @if (Model.MainForm != null)
     {
         <div class="forms-wrapper">
             @await Component.InvokeAsync("RenderForm", new { formId = Model.MainForm, includeScripts = false })
