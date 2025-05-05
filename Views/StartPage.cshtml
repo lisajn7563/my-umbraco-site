@@ -16,8 +16,13 @@
 </div>
 
 <div class="hero-section">
+	
 	<h1>@Model.HeroTitle</h1>
-	<p>@Model.HeroPreamble</p>
+	@if (Model.MainMenuItems?.Any() == true)
+	{
+		<button id="randomNavigationButton" class="button-primary">Börja Matcha</button>
+	}
+		<p>@Model.HeroPreamble</p>
 </div>
 
 @if (Model.MainMenuItems?.Any() == true)
@@ -33,4 +38,19 @@
 			}
 		</div>
 	</div>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const randomButton = document.getElementById('randomNavigationButton');
+			if (randomButton) {
+				randomButton.addEventListener('click', function() {
+					const menuItems = @Json.Serialize(Model.MainMenuItems.Select(item => item.Url()));
+					if (menuItems && menuItems.length > 0) {
+						const randomIndex = Math.floor(Math.random() * menuItems.length);
+						window.location.href = menuItems[randomIndex];
+					}
+				});
+			}
+		});
+	</script>
 }

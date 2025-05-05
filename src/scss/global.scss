@@ -1,5 +1,6 @@
 @use './colors.scss';
-@use './breakpoints.scss' as breakpoints;;
+@use './breakpoints.scss' as breakpoints;
+@use './icons.scss';
 
 // Border radius variables
 :root,
@@ -16,7 +17,7 @@
 body {
   background-color: var(--color-pink-200);
   font-family: 'Arial', sans-serif;
-  color: var(--color-grey-600);
+  color: var(--color-grey-700);
   line-height: 1.6;
 }
 
@@ -42,4 +43,27 @@ body {
       height: calc(var(--baseline) * 60); /* Larger height for desktop (240px) */
     }
   }
+
 }
+
+.footer-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: var(--color-pink-900);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  a:hover {
+    color: var(--color-pink-700);
+    text-decoration: underline;
+    }
+
+  p{
+    font-size: 14px;
+    margin: var(--baseline) 0 0;
+  }
+  }
