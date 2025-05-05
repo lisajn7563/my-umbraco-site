@@ -4,13 +4,15 @@
 @use '../breakpoints.scss';
 
 .hero-image {
-  height: auto; // Default height for mobile devices
+  max-width: 60%; /* Make the container smaller */
+  margin: 0 auto; /* Center the container */
   
-  @media (min-width: 500px) {
-    display: flex;
-    height: 400px;
-    justify-content: center;
+  img{
+    width: 100%; /* Take full width of the container */
+    object-fit: cover; /* Maintains aspect ratio and prevents distortion */
+    object-position: center; /* Centers the image */
   }
+  height: auto; // Default height for mobile devices
 }
 // This is a test class to verify compilation is working
 .hero-section {

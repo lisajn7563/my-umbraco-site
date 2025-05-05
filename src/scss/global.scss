@@ -1,4 +1,5 @@
 @use './colors.scss';
+@use './breakpoints.scss' as breakpoints;;
 
 // Border radius variables
 :root,
@@ -23,11 +24,22 @@ body {
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 var(--spacing-4) var(--spacing-2);
+  padding: 0 var(--spacing-1) var(--spacing-2);
 
-  img{
-    max-width: 100%;
-    height: auto;
+ 
+  img {
+    width: 100%; /* Take full width of the container */
+    height: var(--spacing-25); /* Default height for mobile (160px) */
+    object-fit: cover; /* Maintains aspect ratio and prevents distortion */
+    object-position: center; /* Centers the image */
     border-radius: var(--border-radius-m);
+    
+    @include breakpoints.breakpoint(s) {
+      height: var(--spacing-28); /* Increased height for medium screens (192px) */
+    }
+    
+    @include breakpoints.breakpoint(m) {
+      height: calc(var(--baseline) * 60); /* Larger height for desktop (240px) */
+    }
   }
 }

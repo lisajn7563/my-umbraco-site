@@ -9,7 +9,7 @@
     </button>
     
     <div id="likedItemsList" class="liked-items-list" style="display: none;">
-        <h3>Items You've Liked</h3>
+        <h3>Företag du har gillat</h3>
         <ul id="likedItemsContainer"></ul>
     </div>
 </div>
@@ -76,12 +76,12 @@
             likedItemsContainer.innerHTML = '';
             
             if (likes.length === 0) {
-                likedItemsContainer.innerHTML = '<li class="empty-message">You haven\'t liked any items yet.</li>';
+                likedItemsContainer.innerHTML = '<li class="empty-message">Du har inte gillat några föremål ännu.</li>';
                 return;
             }
             
             // Create a loading indicator
-            likedItemsContainer.innerHTML = '<li>Loading...</li>';
+            likedItemsContainer.innerHTML = '<li>Laddar...</li>';
             
             const likedItemsDetails = [];
             

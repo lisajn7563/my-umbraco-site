@@ -36,6 +36,10 @@
   --spacing-22: calc(var(--baseline) * 22); /* 176px */
   --spacing-23: calc(var(--baseline) * 23); /* 184px */
   --spacing-24: calc(var(--baseline) * 24); /* 192px */
+  --spacing-25: calc(var(--baseline) * 25); /* 200px */
+  --spacing-26: calc(var(--baseline) * 36); /* 288px */
+  --spacing-27: calc(var(--baseline) * 40); /* 320px */ 
+  --spacing-28: calc(var(--baseline) * 44); /* 352px */ 
   
   /* Special spacing variables */
   --grid-gutter: var(--spacing-2); /* 16px - Used for grid layouts */
