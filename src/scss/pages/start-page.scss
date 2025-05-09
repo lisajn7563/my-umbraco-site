@@ -4,17 +4,19 @@
 @use '../breakpoints.scss';
 
 .hero-image {
-  max-width: 60%; /* Make the container smaller */
-  margin: 0 auto; /* Center the container */
-  
+  margin: 0 auto;
+  max-width: 80%;
   img{
-    width: 100%; /* Take full width of the container */
-    object-fit: cover; /* Maintains aspect ratio and prevents distortion */
-    object-position: center; /* Centers the image */
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
-  height: auto; // Default height for mobile devices
+  height: auto;
+  @include breakpoints.breakpoint(s) {
+    max-width: 60%;
+  }
 }
-// This is a test class to verify compilation is working
+
 .hero-section {
   display: flex;
   flex-direction: column;
@@ -23,8 +25,6 @@
   text-align: center;
 }
 
-
-// Location section styles
 .location-section {
   background-color:var(--color-pink-50);
   padding: 2rem;

@@ -54,13 +54,11 @@
   background: var(--color-white);
   border: 1px solid var(--color-pink-200);
   padding: 1.5rem;
-  padding-bottom: 2rem; // Increased bottom padding
+  padding-bottom: 2rem;
   border-radius: var(--border-radius-m);
-
-// Increased bottom margin  .// Increased bottom margin  card-section-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
   }
 
 
@@ -102,7 +100,7 @@
   }
 
   li.city {
-    @include icons.icon(before, globe);
+    @include icons.icon(before, house);
       }
   li.client {
     @include icons.icon(before, circle-user-round);

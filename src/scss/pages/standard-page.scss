@@ -17,14 +17,14 @@
     
     img {
         max-width: 100%;
-        width: 100%; /* Smaller image on mobile */
+        width: 100%;
     }
     
     @include breakpoints.breakpoint(m) {
         height: 300px;
         
         img {
-            width: 70%; /* Full size on larger screens */
+            width: 70%;
         }
     }
 }

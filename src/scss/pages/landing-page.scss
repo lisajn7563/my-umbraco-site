@@ -4,16 +4,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--spacing-3); // Very small gap (4px) to make buttons appear close together
+  gap: var(--spacing-3);
   padding: var(--spacing-2) 0;
   position: fixed;
   z-index: 20;
-  bottom: 0px; // Position at bottom of viewport
+  bottom: 0px;
   left: 0;
   right: 0;
   
   @media (max-width: 768px) {
-    gap: var(--spacing-2); // Consistent small gap on mobile
+    gap: var(--spacing-2);
   }
 }
 
@@ -62,7 +62,6 @@
   @include icons.icon(after, house);
 }
 
-// Standard page button - arrow pointing down
 .btn-standard {
   background-color: var(--color-pink-100);
   border-color: var(--color-pink-900);

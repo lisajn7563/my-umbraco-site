@@ -14,7 +14,6 @@
 }
 
 @mixin pseudo-icon($icon: check) {
-  // Path corrected to point to the wwwroot location where the SVGs are served from
   $icon-url: '/Icons/#{$icon}.svg';
 
   content: '';
