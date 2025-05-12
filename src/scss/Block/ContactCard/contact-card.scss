@@ -101,7 +101,13 @@
 
   li.city {
     @include icons.icon(before, house);
-      }
+  }
+  li.language {
+    @include icons.icon(before, globe);
+  }
+  li.animals {
+    @include icons.icon(before, paw);
+  }
   li.client {
     @include icons.icon(before, circle-user-round);
   }

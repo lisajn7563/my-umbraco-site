@@ -5,13 +5,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass src/scss:wwwroot/css",
-    "sass:watch": "sass --watch src/scss:wwwroot/css"
+    "sass:watch": "sass --watch src/scss:wwwroot/css",
+    "copy-icons": "copyfiles -u 1 \"src/Icons/**/*\" wwwroot/Icons",
+    "build": "npm run sass && npm run copy-icons",
+    "dev": "npm run copy-icons && npm run sass:watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "copyfiles": "^2.4.1",
     "sass": "^1.86.3"
   }
 }

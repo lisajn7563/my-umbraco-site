@@ -58,6 +58,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string Address => this.Value<string>(_publishedValueFallback, "address");
 
 		///<summary>
+		/// Animals
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("animals")]
+		public virtual string Animals => this.Value<string>(_publishedValueFallback, "animals");
+
+		///<summary>
 		/// City
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
@@ -80,6 +88,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("interests")]
 		public virtual global::System.Collections.Generic.IEnumerable<string> Interests => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "interests");
+
+		///<summary>
+		/// Language
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.3.0+131c9cd")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("language")]
+		public virtual string Language => this.Value<string>(_publishedValueFallback, "language");
 
 		///<summary>
 		/// Main image
