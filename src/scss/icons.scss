@@ -1,6 +1,5 @@
 @mixin icon($placement: after, $icon) {
   display: inline-flex;
-  align-items: center;
 
   @if $placement == after {
     &::after {
